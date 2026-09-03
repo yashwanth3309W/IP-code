@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Online Quiz</title>
+</head>
+
+<body>
+<center>
+
+<h1>Online AI Quiz</h1>
+
+<form action="NewServlet" method="post">
+
+<label>Enter Your Name:</label>
+<input type="text" name="username" required>
+
+<br><br>
+
+<!-- MCQ 1 -->
+<b>1. What does AI stand for?</b><br>
+
+<input type="radio" name="q1"
+value="Artificial Intelligence" required>
+Artificial Intelligence<br>
+
+<input type="radio" name="q1"
+value="Automated Information">
+Automated Information<br>
+
+<input type="radio" name="q1"
+value="Advanced Internet">
+Advanced Internet<br>
+
+<input type="radio" name="q1"
+value="Artificial Integration">
+Artificial Integration<br><br>
+
+
+<!-- MCQ 2 -->
+<b>2. Which language is commonly used for Data Science?</b><br>
+
+<input type="radio" name="q2"
+value="HTML" required>
+HTML<br>
+
+<input type="radio" name="q2"
+value="Python">
+Python<br>
+
+<input type="radio" name="q2"
+value="CSS">
+CSS<br>
+
+<input type="radio" name="q2"
+value="XML">
+XML<br><br>
+
+
+<!-- MCQ 3 -->
+<b>3. Which of the following is a database?</b><br>
+
+<input type="radio" name="q3"
+value="HTML" required>
+HTML<br>
+
+<input type="radio" name="q3"
+value="MySQL">
+MySQL<br>
+
+<input type="radio" name="q3"
+value="Python">
+Python<br>
+
+<input type="radio" name="q3"
+value="CSS">
+CSS<br><br>
+
+
+<!-- MCQ 4 -->
+<b>4. What does ML stand for?</b><br>
+
+<input type="radio" name="q4"
+value="Machine Learning" required>
+Machine Learning<br>
+
+<input type="radio" name="q4"
+value="Machine Language">
+Machine Language<br>
+
+<input type="radio" name="q4"
+value="Manual Learning">
+Manual Learning<br>
+
+<input type="radio" name="q4" value="Model Logic">
+Model Logic<br><br>
+
+
+<!-- MCQ 5 -->
+<b>5. Which data structure follows FIFO?</b><br>
+
+<input type="radio" name="q5" value="Stack" required>
+Stack<br>
+
+<input type="radio" name="q5" value="Queue">
+Queue<br>
+
+<input type="radio" name="q5" value="Tree">
+Tree<br>
+
+<input type="radio" name="q5" value="Graph">
+Graph<br><br>
+
+
+
+<h2>One Word Answer Questions</h2>
+
+<!-- One Word 1 -->
+<b>6. Which operating system is open source?</b><br>
+<input type="text" name="q6" value="">
+<br><br>
+
+<!-- One Word 2 -->
+<b>7. Which language is used to structure web pages?</b><br>
+<input type="text" name="q7" value="">
+<br><br>
+
+<!-- One Word 3 -->
+<b>8. Which data structure follows LIFO?</b><br>
+<input type="text" name="q8" value="">
+<br><br>
+
+
+<input type="submit" value="Submit Quiz">
+</center>
+
+</form>
+
+</body>
+</html>
+
+servlet code
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/QuizServlet")
+public class NewServlet extends HttpServlet {
+
+    @Override
+    protected void doPost(HttpServletRequest request,
+                           HttpServletResponse response)
+            throws ServletException, IOException {
+
+        response.setContentType("text/html;charset=UTF-8");
+
+        String name = request.getParameter("username");
+
+        String q1 = request.getParameter("q1");
+        String q2 = request.getParameter("q2");
+        String q3 = request.getParameter("q3");
+        String q4 = request.getParameter("q4");
+        String q5 = request.getParameter("q5");
+        String q6 = request.getParameter("q6");
+        String q7 = request.getParameter("q7");
+        String q8 = request.getParameter("q8");
+
+        int score = 0;
+
+        if ("Artificial Intelligence".equals(q1))
+            score++;
+
+        if ("Python".equals(q2))
+            score++;
+
+        if ("MySQL".equals(q3))
+            score++;
+
+        if ("Machine Learning".equals(q4))
+            score++;
+
+        if ("Queue".equals(q5))
+            score++;
+
+        if ("Linux".equals(q6))
+            score++;
+
+        if ("HTML".equals(q7))
+            score++;
+
+        if ("Stack".equals(q8))
+            score++;
+        
+
+        PrintWriter out = response.getWriter();
+        
+        
+
+        out.println("<html>");
+        out.println("<head><title>Quiz Result</title></head>");
+        out.println("<body>");
+        out.println("<center>");
+
+        out.println("<h1>Quiz Result</h1>");
+        out.println("<h2>Welcome, " + name + "!</h2>");
+        out.println("<h2>Your Score: " + score + " / 8</h2>");
+
+        if (score >= 6) {
+            out.println("<h3>Excellent!</h3>");
+        } else if (score >= 4) {
+            out.println("<h3>Good!</h3>");
+        } else {
+            out.println("<h3>Keep Practicing!</h3>");
+        }
+        out.println("</center>");
+        out.println("</body>");
+        out.println("</html>");
+       
+    }
+}

@@ -1,0 +1,386 @@
+EX 3
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Shopping Store</title>
+    <link rel="stylesheet" href="ex3.css">
+
+        <style>
+    
+    #title{
+    color: yellow;
+}
+
+.product-title{
+    color: red;
+}
+    button:hover{background-color:red;}
+        body {
+            background: #F5F5DC;
+            font-family: Arial, sans-serif;
+        }
+
+        #title {
+            background: #0050a7;
+            color: yellow;
+            padding: 15px;
+        }
+
+       
+        .product-title {
+            color: red;
+        }
+
+        #cartHeading {
+            color: blue;
+        }
+
+      
+        #orderHeading {
+            color: brown;
+        }
+
+        #cart {
+            width: 350px;
+            height: 250px;
+            border: 3px dashed blue;
+            background: white;
+            overflow: auto;
+            padding: 10px;
+        }
+
+        #cartTable img {
+            width: 80px;
+            height: 100px;
+        }
+
+        .product-section {
+            background-color: #FFF8DC;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<center>
+    <h1 id="title" >ONLINE SHOPPING STORE</h1>
+
+    <img src="Logo.jpg" width="250" height="150">
+
+    <h3>Choose your product</h3>
+
+    <img src="pp.jpg" width="550" height="300" usemap="#section1">
+
+    <map name="section1">
+        <area shape="rect" coords="1,2,285,303" href="#bat">
+        <area shape="rect" coords="265,1,522,306" href="#jersey">
+        <area shape="rect" coords="504,2,810,301" href="#shoe">
+    </map>
+
+  
+    <table border="1" width="90%" cellpadding="10" class="product-section" id="bat">
+        <tr align="center">
+            <td colspan="3">
+                <h2 class="product-title">Cricket Bat</h2>
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+                <img id="BAT" src="bat1.jpg" width="150" height="200" draggable="true" ondragstart="drag(event)">
+                <br><br><b>SS Cricket Bat</b><br>Price : ₹4000
+            </td>
+            <td>
+                <img id="MRF Cricket Bat" src="bat2.jpg" width="150" height="200" draggable="true" ondragstart="drag(event)">
+                <br><br><b>MRF Cricket Bat</b><br>Price : ₹5000
+            </td>
+            <td>
+                <video width="150" height="180" controls>
+                    <source src="video.mp4" type="video/mp4">
+                </video>
+            </td>
+        </tr>
+    </table>
+
+  
+    <table border="1" width="90%" cellpadding="10" class="product-section" id="jersey">
+        <tr align="center">
+            <td colspan="3">
+                <h2 class="product-title">Cricket Jersey</h2>
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+                <img id="jersey1" src="j1.jpg" width="150" height="200" draggable="true" ondragstart="drag(event)">
+                <br><br><b>GT Jersey</b><br>Price : ₹1000
+            </td>
+            <td>
+                <img id="jersey2" src="j2.jpg" width="150" height="200" draggable="true" ondragstart="drag(event)">
+                <br><br><b>RR Jersey</b><br>Price : ₹1000
+            </td>
+            <td>
+                <video width="150" height="180" controls>
+                    <source src="video.mp4" type="video/mp4">
+                </video>
+            </td>
+        </tr>
+    </table>
+
+    
+    <table border="1" width="90%" cellpadding="10" class="product-section" id="shoe">
+        <tr align="center">
+            <td colspan="3">
+                <h2 class="product-title">Shoes</h2>
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+                <img id="shoe1" src="shoe1.jpg" width="150" height="200" draggable="true" ondragstart="drag(event)">
+                <br><br><b>One8 Shoes</b><br>Price : ₹9284
+            </td>
+            <td>
+                <img id="shoe2" src="shoe2.jpg" width="150" height="200" draggable="true" ondragstart="drag(event)">
+                <br><br><b>One8 Shoes</b><br>Price : ₹9284
+            </td>
+            <td>
+                <video width="150" height="180" controls>
+                    <source src="video.mp4" type="video/mp4">
+                </video>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    
+    <table border="1" width="90%" cellpadding="10">
+        <tr>
+
+            <!-- SHOPPING CART -->
+            <td width="50%" valign="top">
+                <h2 id="cartHeading">SHOPPING CART</h2>
+
+                <div id="cart" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <table id="cartTable" border="1" width="100%">
+                        <tr id="cartRow"></tr>
+                    </table>
+                </div>
+            </td>
+            <td width="50%" valign="top">
+                <h2 id="orderHeading">ORDER FORM</h2>
+
+                <form>
+                    <h3>Full Name</h3>
+                    <input type="text" size="40">
+
+                    <h3>Email</h3>
+                    <input type="email" size="40">
+
+                    <h3>Phone</h3>
+                    <input type="text" size="40">
+
+                    <h3>Address</h3>
+                    <textarea rows="4" cols="40"></textarea>
+
+                    Payment Method
+                    <select>
+                        <option>Cash on Delivery</option>
+                        <option>Online Payment</option>
+                    </select>
+
+                    <br><br>
+
+                    <button>PLACE ORDER</button>
+                </form>
+            </td>
+
+        </tr>
+    </table>
+
+</center>
+
+<script>
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var id = ev.dataTransfer.getData("text");
+    var img = document.getElementById(id).cloneNode(true);
+
+    img.width = 80;
+    img.height = 100;
+    img.draggable = false;
+
+    var td = document.createElement("td");
+    td.appendChild(img);
+
+    document.getElementById("cartRow").appendChild(td);
+}
+
+document.addEventListener("dragover", function(e) {
+    if (e.clientY < 80) window.scrollBy(0, -20);
+    if (e.clientY > window.innerHeight - 80) window.scrollBy(0, 20);
+});
+</script>
+
+</body>
+</html>
+
+Css
+body {
+    background: #F5F5DC;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+#title {
+    background: #0050a7;
+    color: yellow;
+    padding: 15px;
+    border-radius: 8px;
+    text-shadow: 2px 2px 4px black;
+}
+.product-title {
+    color: red;
+    font-size: 28px;
+}
+#cartHeading {
+    color: blue;
+}
+#orderHeading {
+    color: brown;
+}
+.product-section {
+    background-color: #FFF8DC;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px gray;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.product-section:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+.product-section td {
+    padding: 15px;
+    position: relative;
+}
+
+.product-section td img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+}
+
+.product-section td img:hover {
+    transform: scale(1.12) rotate(-2deg);
+    box-shadow: 0 8px 24px rgba(222, 225, 227, 0.85), 0 0 40px rgba(241, 243, 245, 0.45);
+    filter: drop-shadow(0 0 12px rgba(247, 249, 250, 0.6));
+}
+img {
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px gray;
+}
+video {
+    border-radius: 8px;
+}
+#cart {
+    width: 350px;
+    height: 250px;
+    border: 3px dashed rgb(194, 194, 232);
+    background: white;
+    overflow: auto;
+    padding: 10px;
+    margin: auto;
+}
+
+#cartTable img {
+    width: 80px;
+    height: 100px;
+}
+form {
+    text-align: left;
+    padding: 15px;
+}
+
+input,
+textarea,
+select {
+    width: 90%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: 15px;
+}
+button {
+    background: #a3b5c8;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+button:hover {
+    background: red;
+    transform: translateY(-2px) scale(1.03);
+}
+table {
+    border-collapse: collapse;
+}
+
+td {
+    text-align: center;
+}
+@media screen and (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+
+    img {
+        width: 120px;
+        height: auto;
+    }
+
+    #cart {
+        width: 90%;
+    }
+
+    input,
+    textarea,
+    select {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

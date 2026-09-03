@@ -1,0 +1,236 @@
+Ex 2
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Shopping Store</title>
+    <link rel="stylesheet" href="style.css">
+
+        <style>
+	
+	#title{
+    color: yellow;
+}
+
+.product-title{
+    color: red;
+}
+	button:hover{background-color:red;}
+        body {
+            background: #F5F5DC;
+            font-family: Arial, sans-serif;
+        }
+
+
+        #title {
+            background: #0050a7;
+            color: yellow;
+            padding: 15px;
+        }
+
+       
+        .product-title {
+            color: red;
+        }
+
+
+        #cartHeading {
+            color: blue;
+        }
+
+      
+        #orderHeading {
+            color: brown;
+        }
+
+        #cart {
+            width: 350px;
+            height: 250px;
+            border: 3px dashed blue;
+            background: white;
+            overflow: auto;
+            padding: 10px;
+        }
+
+        #cartTable img {
+            width: 80px;
+            height: 100px;
+        }
+
+        .product-section {
+            background-color: #FFF8DC;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<center>
+    <h1 id="title" >ONLINE SHOPPING STORE</h1>
+
+    <img src="Logo.jpg" width="250" height="150">
+
+    <h3>Choose your product</h3>
+
+    <img src="pp.jpg" width="550" height="300" usemap="#section1">
+
+    <map name="section1">
+        <area shape="rect" coords="1,2,285,303" href="#bat">
+        <area shape="rect" coords="265,1,522,306" href="#jersey">
+        <area shape="rect" coords="504,2,810,301" href="#shoe">
+    </map>
+
+  
+    <table border="1" width="90%" cellpadding="10" class="product-section" id="bat">
+        <tr align="center">
+            <td colspan="3">
+                <h2 class="product-title">Cricket Bat</h2>
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+                <img id="BAT" src="bat1.jpg" width="150" height="200" draggable="true" ondragstart="drag(event)">
+                <br><br><b>SS Cricket Bat</b><br>Price : ₹4000
+            </td>
+            <td>
+                <img id="MRF Cricket Bat" src="bat2.jpg" width="150" height="200" draggable="true" ondragstart="drag(event)">
+                <br><br><b>MRF Cricket Bat</b><br>Price : ₹5000
+            </td>
+            <td>
+                <video width="150" height="180" controls>
+                    <source src="video.mp4" type="video/mp4">
+                </video>
+            </td>
+        </tr>
+    </table>
+
+  
+    <table border="1" width="90%" cellpadding="10" class="product-section" id="jersey">
+        <tr align="center">
+            <td colspan="3">
+                <h2 class="product-title">Cricket Jersey</h2>
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+                <img id="jersey1" src="j1.jpg" width="150" height="200" draggable="true" ondragstart="drag(event)">
+                <br><br><b>GT Jersey</b><br>Price : ₹1000
+            </td>
+            <td>
+                <img id="jersey2" src="j2.jpg" width="150" height="200" draggable="true" ondragstart="drag(event)">
+                <br><br><b>RR Jersey</b><br>Price : ₹1000
+            </td>
+            <td>
+                <video width="150" height="180" controls>
+                    <source src="video.mp4" type="video/mp4">
+                </video>
+            </td>
+        </tr>
+    </table>
+
+    
+    <table border="1" width="90%" cellpadding="10" class="product-section" id="shoe">
+        <tr align="center">
+            <td colspan="3">
+                <h2 class="product-title">Shoes</h2>
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+                <img id="shoe1" src="shoe1.jpg" width="150" height="200" draggable="true" ondragstart="drag(event)">
+                <br><br><b>One8 Shoes</b><br>Price : ₹9284
+            </td>
+            <td>
+                <img id="shoe2" src="shoe2.jpg" width="150" height="200" draggable="true" ondragstart="drag(event)">
+                <br><br><b>One8 Shoes</b><br>Price : ₹9284
+            </td>
+            <td>
+                <video width="150" height="180" controls>
+                    <source src="video.mp4" type="video/mp4">
+                </video>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    
+    <table border="1" width="90%" cellpadding="10">
+        <tr>
+
+            <!-- SHOPPING CART -->
+            <td width="50%" valign="top">
+                <h2 id="cartHeading">SHOPPING CART</h2>
+
+                <div id="cart" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <table id="cartTable" border="1" width="100%">
+                        <tr id="cartRow"></tr>
+                    </table>
+                </div>
+            </td>
+            <td width="50%" valign="top">
+                <h2 id="orderHeading">ORDER FORM</h2>
+
+                <form>
+                    <h3>Full Name</h3>
+                    <input type="text" size="40">
+
+                    <h3>Email</h3>
+                    <input type="email" size="40">
+
+                    <h3>Phone</h3>
+                    <input type="text" size="40">
+
+                    <h3>Address</h3>
+                    <textarea rows="4" cols="40"></textarea>
+
+                    Payment Method
+                    <select>
+                        <option>Cash on Delivery</option>
+                        <option>Online Payment</option>
+                    </select>
+
+                    <br><br>
+
+                    <button>PLACE ORDER</button>
+                </form>
+            </td>
+
+        </tr>
+    </table>
+
+</center>
+
+<script>
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var id = ev.dataTransfer.getData("text");
+    var img = document.getElementById(id).cloneNode(true);
+
+    img.width = 80;
+    img.height = 100;
+    img.draggable = false;
+
+    var td = document.createElement("td");
+    td.appendChild(img);
+
+    document.getElementById("cartRow").appendChild(td);
+}
+
+document.addEventListener("dragover", function(e) {
+    if (e.clientY < 80) window.scrollBy(0, -20);
+    if (e.clientY > window.innerHeight - 80) window.scrollBy(0, 20);
+});
+</script>
+
+</body>
+</html>
+
